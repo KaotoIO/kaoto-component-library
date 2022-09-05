@@ -58,18 +58,15 @@
     "web-vitals": "2.1.4"
   },
   "scripts": {
-    "build:dev": "rimraf dist && npm copy:css && npm copy:images && tsc -p tsconfig.dev.json",
-    "build:prod": "npm lint && rimraf dist && npm copy:css && npm copy:images && tsc -p tsconfig.prod.json && npm test",
+    "build:dev": "rimraf dist && npm run copy:css && npm run copy:images && tsc -p tsconfig.dev.json",
+    "build:prod": "npm run lint && rimraf dist && npm run copy:css && npm run copy:images && tsc -p tsconfig.prod.json",
     "copy:css": "copyfiles -u 1 \"src/**/*.{sass,scss,css}\" dist/",
     "copy:images": "cpr ./static/images ./dist/editor/images",
     "cy:open": "npm cypress open --project it-tests",
     "cy:run": "npm cypress run -b chrome --project it-tests",
     "deploy": "gh-pages -d dist",
-    "lint": "npm run-script-if --bool \"$(build-env global.build.lint)\" --then \"npm eslint ./src --ext .ts,.tsx\"",
-    "start": "cross-env GENERATE_SOURCEMAP=false webpack serve -c ./dev-webapp/webpack.config.js --host 0.0.0.0 --env dev",
-    "test": "npm run-script-if --bool \"$(build-env global.build.test)\" --then \"jest --silent --verbose --passWithNoTests\"",
-    "test:it": "npm run-script-if --bool \"$(build-env global.build.testIT)\" --then \"npm rimraf ./dist-it-tests\" \"npm start-server-and-test start http-get://0.0.0.0:$(build-env pmmlEditor.dev.port) cy:run\"",
-    "test:watch": "jest --watch"
+    "lint": "eslint ./src --ext .ts,.tsx",
+    "start": "cross-env GENERATE_SOURCEMAP=false webpack serve -c ./dev-webapp/webpack.config.js --host 0.0.0.0 --env dev"
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.2.0",
@@ -79,8 +76,6 @@
     "@kie-tools-core/keyboard-shortcuts": "^0.22.0",
     "@kie-tools-core/operating-system": "^0.22.0",
     "@kie-tools-core/run-script-if": "^0.22.0",
-    "@kie-tools-core/webpack-base": "workspace:*",
-    "@kie-tools/build-env": "workspace:*",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-docs": "^6.5.9",
     "@storybook/addon-links": "^6.5.9",
