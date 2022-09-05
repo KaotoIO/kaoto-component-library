@@ -1,5 +1,3 @@
-import * as React from "React";
-
 import {
   fetchIntegrationSourceCode,
   startDeployment,

@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import { HashRouter as Router } from "react-router-dom";
 
 import * as React from "react";
-import { KogitoEdit } from "@kie-tools-core/workspace/dist/api";
+import { WorkspaceEdit } from "@kie-tools-core/workspace/dist/api";
 import { Notification } from "@kie-tools-core/notifications/dist/api";
 import { KogitoEditorIntegrationProvider } from "./kogito-editor-integration/KogitoEditorIntegrationProvider";
 
@@ -29,7 +29,7 @@ interface Props {
    * that a change has taken place. Increases the decoupling of the KaotoEditor from the Channel.
    * @param edit An object representing the unique change.
    */
-  newEdit: (edit: KogitoEdit) => void;
+  newEdit: (edit: WorkspaceEdit) => void;
 
   /**
    * Delegation for NotificationsApi.setNotifications(path, notifications) to report all validation
@@ -92,7 +92,7 @@ export class KaotoEditor extends React.Component<Props, State> {
 
   public updateContent(content: string): void {
     this.setState({ content: content });
-    this.props.newEdit(new KogitoEdit(content));
+    this.props.newEdit(new WorkspaceEdit(content));
   }
 
   public async undo(): Promise<void> {
