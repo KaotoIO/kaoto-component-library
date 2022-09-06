@@ -15,6 +15,7 @@
     "url": "https://github.com/KaotoIO/kaoto-component-library.git"
   },
   "dependencies": {
+    "@kaoto/kaoto-ui": "^0.3.1",
     "@kie-tools-core/editor": "^0.22.0",
     "@kie-tools-core/guided-tour": "^0.22.0",
     "@kie-tools-core/monaco-editor": "^0.22.0",

@@ -1,7 +1,8 @@
 import "./KaotoEditor.css";
-import { AlertProvider, MASLoading } from "./components/components";
-import { AppLayout } from "./components/layouts/AppLayout";
-import { AppRoutes } from "./components/routes";
+import { MASLoading } from "@kaoto/kaoto-ui/src/layout/MASLoading/MASLoading";
+import { AlertProvider } from "@kaoto/kaoto-ui/src/layout/MASAlerts/MASAlerts";
+import { AppLayout } from "@kaoto/kaoto-ui/src/layout/AppLayout";
+import { AppRoutes } from "@kaoto/kaoto-ui/src/routes";
 import { Suspense } from "react";
 import { HashRouter as Router } from "react-router-dom";
 
